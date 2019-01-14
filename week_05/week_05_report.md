@@ -21,8 +21,8 @@
         --test-frac 0.25`
 **OUTPUT:**
     Found 39 patients
-    919 training patients
-    316 testing patients
+    922 training patients
+    313 testing patients
 
 - Step 2: Importing the data (convert to numpy arrays)
 `python3 import_data.py 
@@ -32,11 +32,11 @@
         --train-image-dir /scratch/oblasko/mcw-prostate-split/train/images 
         --output-dir /scratch/oblasko/mcw-classification-model`
 OUTPUT:
-`0 negative predictions
+0 negative predictions
 0 excluded from test
-798 kept
-1205 training images
-798 testing images`
+313 kept
+922 training images
+313 testing images
 
 - Step 3: Running the classification model
 
@@ -45,8 +45,11 @@ OUTPUT:
        --output-dir /scratch/oblasko/mcw-classification-model \
        --num-epochs 100`
 
+**Problem**
+Running the split script more than once caused assigning patients multiple times and some patients appeared in the training and testing data at the same time, therefore the testing data was biased and that falsely enhanced accuracy of our model -- to ~0.98.
+This problem was solved by deleting the `/scratch/oblasko/mcw-prostate-split` directory and running the split script only once. We then got our final model with these metrics:
 
-**Final Loss:** 0.04504310855651298
-**Final Accuracy:** 0.9849624060150376
+Final Loss: 0.3868426152121145
+Final Accuracy: 0.8913738019169329
 
-Output can be found in `prostate_classification.txt` file
+Output can be found in the `prostate_classification.txt` file
