@@ -16,7 +16,7 @@ We created 3 parallel identical layers which consisted of several different laye
 ### Model evaluation
 All models were trained with **dropout rate - 0.5**.
 | batch_size        | number of training epochs           | accuracy on testing data  | loss on testing data |
-| ------------- |:-------------:| -----:| -----:|
+| ------------- | ------------- | ----- | ----- |
 | 2     | 50 | 0.645 | 4.461    |
 | 2      | 100      |   0.642 | 4.658 |
 | 4 | 100      | 0.619    | 4.719 |
