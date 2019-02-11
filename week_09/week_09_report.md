@@ -13,9 +13,13 @@ Before feeding the images into the network, the images needed to be pre-processe
 #### Model architecure
 We created 3 parallel identical layers which consisted of several different layers(see image). We then concatenated them using [keras.layers.concatenate](https://keras.io/layers/merge/) interface into one single layer. This merged layer was then feeded into the output Dense layer. For implementation see function `get_unet()`.
 
+#### Training the models
+Training output of the models can be found in the `training-outputs` folder. 
+
 ### Model evaluation
 All models were trained with **dropout rate - 0.5**.
-| batch_size        | number of training epochs           | accuracy on testing data  | loss on testing data |
+
+| batch_size        | number of training epochs           | accuracy on testing data | loss on testing data |
 | ------------- | ------------- | ----- | ----- |
 | 2     | 50 | 0.645 | 4.461    |
 | 2      | 100      |   0.642 | 4.658 |
