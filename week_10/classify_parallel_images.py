@@ -133,11 +133,17 @@ def get_unet(dropout_rate):
     conv1 = ReLU()(conv1)
     conv1 = Conv2D(32, (3, 3), padding='same')(conv1)
     conv1 = ReLU()(conv1)
-    pool1 = MaxPooling2D((2, 2))(conv1)
+    conv1 = MaxPooling2D((2, 2))(conv1)
 
-    conv1 = Conv2D(64, (3, 3), padding='same')(pool1)
+    conv1 = Conv2D(64, (3, 3), padding='same')(conv1)
     conv1 = ReLU()(conv1)
     conv1 = Conv2D(64, (3, 3), padding='same')(conv1)
+    conv1 = ReLU()(conv1)
+    conv1 = MaxPooling2D((2, 2))(conv1)
+
+    conv1 = Conv2D(128, (3, 3), padding='same')(conv1)
+    conv1 = ReLU()(conv1)
+    conv1 = Conv2D(128, (3, 3), padding='same')(conv1)
     conv1 = ReLU()(conv1)
     glb_pool1 = GlobalMaxPooling2D()(conv1)
 
@@ -146,25 +152,36 @@ def get_unet(dropout_rate):
     conv2 = ReLU()(conv2)
     conv2 = Conv2D(32, (3, 3), padding='same')(conv2)
     conv2 = ReLU()(conv2)
-    pool2 = MaxPooling2D((2, 2))(conv2)
+    conv2 = MaxPooling2D((2, 2))(conv2)
 
-    conv2 = Conv2D(64, (3, 3), padding='same')(pool2)
+    conv2 = Conv2D(64, (3, 3), padding='same')(conv2)
     conv2 = ReLU()(conv2)
     conv2 = Conv2D(64, (3, 3), padding='same')(conv2)
     conv2 = ReLU()(conv2)
-    glb_pool2 = GlobalMaxPooling2D()(conv2)
+    conv2 = MaxPooling2D((2, 2))(conv2)
 
+    conv2 = Conv2D(128, (3, 3), padding='same')(conv2)
+    conv2 = ReLU()(conv2)
+    conv2 = Conv2D(128, (3, 3), padding='same')(conv2)
+    conv2 = ReLU()(conv2)
+    glb_pool2 = GlobalMaxPooling2D()(conv2)
 
     #third paraller layer
     conv3 = Conv2D(32, (3, 3), padding='same')(input3)
     conv3 = ReLU()(conv3)
     conv3 = Conv2D(32, (3, 3), padding='same')(conv3)
     conv3 = ReLU()(conv3)
-    pool3 = MaxPooling2D((2, 2))(conv3)
+    conv3 = MaxPooling2D((2, 2))(conv3)
 
-    conv3 = Conv2D(64, (3, 3), padding='same')(pool3)
+    conv3 = Conv2D(64, (3, 3), padding='same')(conv3)
     conv3 = ReLU()(conv3)
     conv3 = Conv2D(64, (3, 3), padding='same')(conv3)
+    conv3 = ReLU()(conv3)
+    conv3 = MaxPooling2D((2, 2))(conv3)
+
+    conv3 = Conv2D(128, (3, 3), padding='same')(conv3)
+    conv3 = ReLU()(conv3)
+    conv3 = Conv2D(128, (3, 3), padding='same')(conv3)
     conv3 = ReLU()(conv3)
     glb_pool3 = GlobalMaxPooling2D()(conv3)
 
