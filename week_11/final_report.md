@@ -17,26 +17,34 @@ The base model that we'll try to improve is a prostate classification model taki
 
 ### Model A
 The first model that we'll try is classification model that takes 3 concatenated images as a one input and outputs label for the middle slice. See picture.
+<br/>
+
 ![Model A](./concatenated_model.png)
 
 #### Image pre-processing
 Every patient slices were sorted and concatenated in a following pattern: [slice_n, slice_n+1, slice_n+2]; where n is in range( 1, number of slices per patient ). Padding technique was used in order to classify first and last slice of each group.
 
 #### Model architecture
-![img](./conc_model_keras.png)
+<br/>
+
+![Model A - keras](./conc_model_keras.png)
 
 #### Training 
 The model was trained on a different number of epochs and with different dropout rates. The best accuracy that we've reached was **0.87**.
 
 ### Model B
 The second model that we'll try is model that has 3 parallel CNN layers and takes each slice as a input into one parallel layer respectively. Parallel layers then get concatenated and output a classification label for the middle slice. 
+<br/>
+
 ![Model B](./parallel_model.png)
 
 #### Image pre-processing
 We created 3 different training groups of images - train1, train2, train3 and 3 different testing groups of images - test1, test2, test3. The groups were created in the following fashion: [slice_1, slice_2, ... , slice_n], [slice_2, slice_3, ... , slice_n-1],[slice_3, slice_4, ..., slice_n-2] so that images could be feeded parallelly. The labels were generated for the middle image per every group of 3 images. Padding technique was used in order to classify first and last slice of each group.
 
 #### Model architecture
-![img](./parallel_model_keras.png)
+<br/>
+
+![Model B - keras](./parallel_model_keras.png)
 
 
 ### Implementation
@@ -46,11 +54,15 @@ Our models were implemented in Python using Keras, Tensorflow, Scikit-Learn, Mat
 ## Results
 
 ### Model A
-![img](./model_a_metrics.png)
+<br/>
+
+![Model A - metrics](./model_a_metrics.png)
 
 
 ### Model B
-![img](./model_b_metrics.png)
+<br/>
+
+![Model B - metrics](./model_b_metrics.png)
 
 
 ## Discussion and conclusion
